@@ -23,7 +23,7 @@ limitations under the License.
 
 require "uri"
 
-module SwaggerClient
+module InventoryClient
   class DefaultApi
     attr_accessor :api_client
 

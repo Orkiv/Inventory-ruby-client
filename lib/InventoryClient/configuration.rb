@@ -23,7 +23,7 @@ limitations under the License.
 
 require 'uri'
 
-module SwaggerClient
+module InventoryClient
   class Configuration
     # Defines url scheme
     attr_accessor :scheme
@@ -201,19 +201,19 @@ module SwaggerClient
     # Returns Auth Settings hash for api client.
     def auth_settings
       {
-        'AccountID' =>
-          {
-            type: 'api_key',
-            in: 'header',
-            key: 'accountid',
-            value: api_key_with_prefix('accountid')
-          },
         'APIKey' =>
           {
             type: 'api_key',
             in: 'header',
             key: 'APIKey',
             value: api_key_with_prefix('APIKey')
+          },
+        'AccountID' =>
+          {
+            type: 'api_key',
+            in: 'header',
+            key: 'accountid',
+            value: api_key_with_prefix('accountid')
           },
       }
     end

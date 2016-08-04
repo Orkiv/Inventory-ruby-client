@@ -1,4 +1,4 @@
-# SwaggerClient::EventRequest
+# InventoryClient::EventRequest
 
 ## Properties
 Name | Type | Description | Notes

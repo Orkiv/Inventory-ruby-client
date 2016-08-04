@@ -23,34 +23,19 @@ limitations under the License.
 
 require 'date'
 
-module SwaggerClient
+module InventoryClient
 
-  class Category
-    # Name of category
-    attr_accessor :name
-
-    # ID of category
-    attr_accessor :id
-
-    # ID of parent element. Top level categories are set to root.
-    attr_accessor :parent
-
+  class Dictionary
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'id' => :'id',
-        :'parent' => :'parent'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'id' => :'String',
-        :'parent' => :'String'
       }
     end
 
@@ -61,18 +46,6 @@ module SwaggerClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.has_key?(:'parent')
-        self.parent = attributes[:'parent']
-      end
 
     end
 
@@ -93,10 +66,7 @@ module SwaggerClient
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class &&
-          name == o.name &&
-          id == o.id &&
-          parent == o.parent
+      self.class == o.class
     end
 
     # @see the `==` method
@@ -108,7 +78,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, id, parent].hash
+      [].hash
     end
 
     # Builds the object from hash
@@ -168,7 +138,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = InventoryClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

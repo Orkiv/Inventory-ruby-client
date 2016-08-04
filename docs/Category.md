@@ -1,4 +1,4 @@
-# SwaggerClient::Category
+# InventoryClient::Category
 
 ## Properties
 Name | Type | Description | Notes

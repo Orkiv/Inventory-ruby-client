@@ -1,4 +1,4 @@
-# SwaggerClient::DefaultApi
+# InventoryClient::DefaultApi
 
 All URIs are relative to *https://www.orkiv.com/i/api*
 
@@ -34,9 +34,9 @@ Method | HTTP request | Description
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -48,12 +48,12 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 begin
   result = api_instance.all_get
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->all_get: #{e}"
 end
 ```
@@ -84,9 +84,9 @@ This endpoint does not need any parameter.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -98,7 +98,7 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 id = "id_example" # String | Id of category to remove
 
@@ -106,7 +106,7 @@ id = "id_example" # String | Id of category to remove
 begin
   result = api_instance.categories_delete(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->categories_delete: #{e}"
 end
 ```
@@ -140,9 +140,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -154,16 +154,16 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 opts = { 
-  query: SwaggerClient::Dictionary.new # Dictionary | Category to query against system
+  query: InventoryClient::Dictionary.new # Dictionary | Category to query against system
 }
 
 begin
   result = api_instance.categories_post(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->categories_post: #{e}"
 end
 ```
@@ -199,9 +199,9 @@ If no ID is specified a new category will be created!
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -213,17 +213,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 id = "id_example" # String | category id to update.
 
-category = SwaggerClient::Category.new # Category | New category information.
+category = InventoryClient::Category.new # Category | New category information.
 
 
 begin
   result = api_instance.categories_put(id, category)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->categories_put: #{e}"
 end
 ```
@@ -258,9 +258,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -272,15 +272,15 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
-item = SwaggerClient::Item.new # Item | Item to create.
+item = InventoryClient::Item.new # Item | Item to create.
 
 
 begin
   result = api_instance.item_add_post(item)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->item_add_post: #{e}"
 end
 ```
@@ -314,9 +314,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -328,15 +328,15 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
-items = [SwaggerClient::Item.new] # Array<Item> | Items to create.
+items = [InventoryClient::Item.new] # Array<Item> | Items to create.
 
 
 begin
   result = api_instance.item_addbulk_post(items)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->item_addbulk_post: #{e}"
 end
 ```
@@ -370,9 +370,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -384,7 +384,7 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 id = "id_example" # String | item id to remove
 
@@ -392,7 +392,7 @@ id = "id_example" # String | item id to remove
 begin
   result = api_instance.item_delete(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->item_delete: #{e}"
 end
 ```
@@ -426,9 +426,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -440,17 +440,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 id = "id_example" # String | item id to update.
 
-item = SwaggerClient::Dictionary.new # Dictionary | New item information.
+item = InventoryClient::Dictionary.new # Dictionary | New item information.
 
 
 begin
   result = api_instance.item_put(id, item)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->item_put: #{e}"
 end
 ```
@@ -485,9 +485,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -499,16 +499,16 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 opts = { 
-  query: SwaggerClient::Dictionary.new # Dictionary | Item to query against system.
+  query: InventoryClient::Dictionary.new # Dictionary | Item to query against system.
 }
 
 begin
   result = api_instance.items_count_post(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->items_count_post: #{e}"
 end
 ```
@@ -542,9 +542,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -556,16 +556,16 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 opts = { 
-  query: SwaggerClient::Dictionary.new # Dictionary | Item to query against system.
+  query: InventoryClient::Dictionary.new # Dictionary | Item to query against system.
 }
 
 begin
   result = api_instance.items_post(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->items_post: #{e}"
 end
 ```
@@ -599,9 +599,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -613,16 +613,16 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 opts = { 
-  query: SwaggerClient::Dictionary.new # Dictionary | Item to query against system.
+  query: InventoryClient::Dictionary.new # Dictionary | Item to query against system.
 }
 
 begin
   result = api_instance.itemsallfields_post(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->itemsallfields_post: #{e}"
 end
 ```
@@ -656,9 +656,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -670,16 +670,16 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 opts = { 
-  query: SwaggerClient::Dictionary.new # Dictionary | Order to query against system.
+  query: InventoryClient::Dictionary.new # Dictionary | Order to query against system.
 }
 
 begin
   result = api_instance.orders_post(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->orders_post: #{e}"
 end
 ```
@@ -713,9 +713,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -727,7 +727,7 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 opts = { 
   page: 3.4, # Float | Current page index.
@@ -736,13 +736,13 @@ opts = {
   search: "search_example", # String | Performs a regex pattern match against the items within your account
   minprice: 3.4, # Float | Min price in hundreds.
   maxprice: 3.4, # Float | Max price in hudreds.
-  query: SwaggerClient::Dictionary.new # Dictionary | Custom parameters to query against system.
+  query: InventoryClient::Dictionary.new # Dictionary | Custom parameters to query against system.
 }
 
 begin
   result = api_instance.query_post(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->query_post: #{e}"
 end
 ```
@@ -782,9 +782,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -796,7 +796,7 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 opts = { 
   page: 3.4, # Float | Current page index.
@@ -805,13 +805,13 @@ opts = {
   search: "search_example", # String | Performs a regex pattern match against the items within your account
   minprice: 3.4, # Float | Min price in hundreds.
   maxprice: 3.4, # Float | Max price in hudreds.
-  query: SwaggerClient::Dictionary.new # Dictionary | Custom parameters to query against system.
+  query: InventoryClient::Dictionary.new # Dictionary | Custom parameters to query against system.
 }
 
 begin
   result = api_instance.queryallfields_post(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->queryallfields_post: #{e}"
 end
 ```
@@ -851,9 +851,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -865,7 +865,7 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 id = "id_example" # String | ID of the service to update
 
@@ -873,7 +873,7 @@ id = "id_example" # String | ID of the service to update
 begin
   result = api_instance.services_delete(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->services_delete: #{e}"
 end
 ```
@@ -907,9 +907,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -921,12 +921,12 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 begin
   result = api_instance.services_get
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->services_get: #{e}"
 end
 ```
@@ -957,9 +957,9 @@ This endpoint does not need any parameter.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -971,15 +971,15 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
-service = SwaggerClient::Service.new # Service | Service to create.
+service = InventoryClient::Service.new # Service | Service to create.
 
 
 begin
   result = api_instance.services_post(service)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->services_post: #{e}"
 end
 ```
@@ -1013,9 +1013,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1027,17 +1027,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 id = "id_example" # String | ID of the service to update
 
-service = SwaggerClient::Service.new # Service | New service data to set.
+service = InventoryClient::Service.new # Service | New service data to set.
 
 
 begin
   result = api_instance.services_put(id, service)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->services_put: #{e}"
 end
 ```
@@ -1072,9 +1072,9 @@ Name | Type | Description  | Notes
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1086,7 +1086,7 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
 opts = { 
   id: "id_example" # String | Will delete event attached to this serviceid
@@ -1095,7 +1095,7 @@ opts = {
 begin
   result = api_instance.write_delete(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->write_delete: #{e}"
 end
 ```
@@ -1131,9 +1131,9 @@ Will ovveride the current event of the specified service.
 ### Example
 ```ruby
 # load the gem
-require 'swagger_client'
+require 'InventoryClient'
 # setup authorization
-SwaggerClient.configure do |config|
+InventoryClient.configure do |config|
   # Configure API key authorization: APIKey
   config.api_key['APIKey'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1145,15 +1145,15 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['accountid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DefaultApi.new
+api_instance = InventoryClient::DefaultApi.new
 
-event_request = SwaggerClient::EventRequest.new # EventRequest | Event to upload
+event_request = InventoryClient::EventRequest.new # EventRequest | Event to upload
 
 
 begin
   result = api_instance.write_post(event_request)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InventoryClient::ApiError => e
   puts "Exception when calling DefaultApi->write_post: #{e}"
 end
 ```

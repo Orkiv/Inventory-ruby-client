@@ -24,15 +24,15 @@ limitations under the License.
 =end
 
 $:.push File.expand_path("../lib", __FILE__)
-require "swagger_client/version"
+require "InventoryClient/version"
 
 Gem::Specification.new do |s|
-  s.name        = "swagger_client"
-  s.version     = SwaggerClient::VERSION
+  s.name        = "InventoryClient"
+  s.version     = InventoryClient::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Swagger-Codegen"]
   s.email       = [""]
-  s.homepage    = "https://github.com/swagger-api/swagger-codegen"
+  s.homepage    = "https://orkiv.com/inventory/inventory.html"
   s.summary     = "InventoryAPI Ruby Gem"
   s.description = "Orkiv Inventory API client "
   s.license     = "Apache 2.0"

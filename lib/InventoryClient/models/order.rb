@@ -23,7 +23,7 @@ limitations under the License.
 
 require 'date'
 
-module SwaggerClient
+module InventoryClient
 
   class Order
     # Order ID
@@ -340,7 +340,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = InventoryClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

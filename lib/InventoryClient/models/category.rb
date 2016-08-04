@@ -23,33 +23,34 @@ limitations under the License.
 
 require 'date'
 
-module SwaggerClient
+module InventoryClient
 
-  class EventRequest
-    # URL for the server to request on successful subscription to specified service
-    attr_accessor :url
+  class Category
+    # Name of category
+    attr_accessor :name
 
-    # ServiceID to bind event to.
-    attr_accessor :serviceid
+    # ID of category
+    attr_accessor :id
 
-    attr_accessor :postbody
+    # ID of parent element. Top level categories are set to root.
+    attr_accessor :parent
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'url' => :'url',
-        :'serviceid' => :'serviceid',
-        :'postbody' => :'postbody'
+        :'name' => :'name',
+        :'id' => :'id',
+        :'parent' => :'parent'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'url' => :'String',
-        :'serviceid' => :'String',
-        :'postbody' => :'Dictionary'
+        :'name' => :'String',
+        :'id' => :'String',
+        :'parent' => :'String'
       }
     end
 
@@ -61,16 +62,16 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'url')
-        self.url = attributes[:'url']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'serviceid')
-        self.serviceid = attributes[:'serviceid']
+      if attributes.has_key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.has_key?(:'postbody')
-        self.postbody = attributes[:'postbody']
+      if attributes.has_key?(:'parent')
+        self.parent = attributes[:'parent']
       end
 
     end
@@ -93,9 +94,9 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          url == o.url &&
-          serviceid == o.serviceid &&
-          postbody == o.postbody
+          name == o.name &&
+          id == o.id &&
+          parent == o.parent
     end
 
     # @see the `==` method
@@ -107,7 +108,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [url, serviceid, postbody].hash
+      [name, id, parent].hash
     end
 
     # Builds the object from hash
@@ -167,7 +168,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = InventoryClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

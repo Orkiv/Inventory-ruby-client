@@ -1,4 +1,4 @@
-# SwaggerClient::Response
+# InventoryClient::Response
 
 ## Properties
 Name | Type | Description | Notes

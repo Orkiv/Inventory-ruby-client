@@ -23,28 +23,64 @@ limitations under the License.
 
 require 'date'
 
-module SwaggerClient
+module InventoryClient
 
-  class InventoryGroup
-    # name of category group
+  class Item
+    # ID of item
+    attr_accessor :id
+
+    # Category ID of item
+    attr_accessor :category
+
+    # Rich text description of item
+    attr_accessor :desc
+
+    # Name of item
     attr_accessor :name
 
-    attr_accessor :items
+    # Integer value of price
+    attr_accessor :ordprice
+
+    # String value of price
+    attr_accessor :price
+
+    # Inventory quantity
+    attr_accessor :quantity
+
+    # Array of item media
+    attr_accessor :media
+
+    # Link to checkout page of item
+    attr_accessor :buy
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'id' => :'id',
+        :'category' => :'category',
+        :'desc' => :'desc',
         :'name' => :'name',
-        :'items' => :'items'
+        :'ordprice' => :'ordprice',
+        :'price' => :'price',
+        :'quantity' => :'quantity',
+        :'media' => :'media',
+        :'buy' => :'Buy'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'id' => :'String',
+        :'category' => :'String',
+        :'desc' => :'String',
         :'name' => :'String',
-        :'items' => :'Array<Item>'
+        :'ordprice' => :'Float',
+        :'price' => :'String',
+        :'quantity' => :'String',
+        :'media' => :'Array<String>',
+        :'buy' => :'String'
       }
     end
 
@@ -56,14 +92,42 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
+      if attributes.has_key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.has_key?(:'category')
+        self.category = attributes[:'category']
+      end
+
+      if attributes.has_key?(:'desc')
+        self.desc = attributes[:'desc']
+      end
+
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'items')
-        if (value = attributes[:'items']).is_a?(Array)
-          self.items = value
+      if attributes.has_key?(:'ordprice')
+        self.ordprice = attributes[:'ordprice']
+      end
+
+      if attributes.has_key?(:'price')
+        self.price = attributes[:'price']
+      end
+
+      if attributes.has_key?(:'quantity')
+        self.quantity = attributes[:'quantity']
+      end
+
+      if attributes.has_key?(:'media')
+        if (value = attributes[:'media']).is_a?(Array)
+          self.media = value
         end
+      end
+
+      if attributes.has_key?(:'Buy')
+        self.buy = attributes[:'Buy']
       end
 
     end
@@ -86,8 +150,15 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          id == o.id &&
+          category == o.category &&
+          desc == o.desc &&
           name == o.name &&
-          items == o.items
+          ordprice == o.ordprice &&
+          price == o.price &&
+          quantity == o.quantity &&
+          media == o.media &&
+          buy == o.buy
     end
 
     # @see the `==` method
@@ -99,7 +170,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, items].hash
+      [id, category, desc, name, ordprice, price, quantity, media, buy].hash
     end
 
     # Builds the object from hash
@@ -159,7 +230,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = InventoryClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

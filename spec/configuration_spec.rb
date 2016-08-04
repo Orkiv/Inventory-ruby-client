@@ -23,14 +23,14 @@ limitations under the License.
 
 require 'spec_helper'
 
-describe SwaggerClient::Configuration do
-  let(:config) { SwaggerClient::Configuration.default }
+describe InventoryClient::Configuration do
+  let(:config) { InventoryClient::Configuration.default }
 
   before(:each) do
     # uncomment below to setup host and base_path
     #require 'URI'
     #uri = URI.parse("https://www.orkiv.com/i/api")
-    #SwaggerClient.configure do |c|
+    #InventoryClient.configure do |c|
     #  c.host = uri.host
     #  c.base_path = uri.path
     #end

@@ -1,4 +1,4 @@
-# SwaggerClient::Item
+# InventoryClient::Item
 
 ## Properties
 Name | Type | Description | Notes

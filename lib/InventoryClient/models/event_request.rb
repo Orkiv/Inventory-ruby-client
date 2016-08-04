@@ -23,43 +23,33 @@ limitations under the License.
 
 require 'date'
 
-module SwaggerClient
+module InventoryClient
 
-  class Service
-    # Name of service
-    attr_accessor :name
+  class EventRequest
+    # URL for the server to request on successful subscription to specified service
+    attr_accessor :url
 
-    # Richtext description of item
-    attr_accessor :desc
+    # ServiceID to bind event to.
+    attr_accessor :serviceid
 
-    # Upfront cost of service in hundreds
-    attr_accessor :price
-
-    attr_accessor :event
-
-    # Recurring monthly cost of subscription
-    attr_accessor :recurpric
+    attr_accessor :postbody
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'desc' => :'desc',
-        :'price' => :'price',
-        :'event' => :'event',
-        :'recurpric' => :'recurpric'
+        :'url' => :'url',
+        :'serviceid' => :'serviceid',
+        :'postbody' => :'postbody'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'name' => :'String',
-        :'desc' => :'String',
-        :'price' => :'String',
-        :'event' => :'EventRequest',
-        :'recurpric' => :'String'
+        :'url' => :'String',
+        :'serviceid' => :'String',
+        :'postbody' => :'Dictionary'
       }
     end
 
@@ -71,24 +61,16 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'url')
+        self.url = attributes[:'url']
       end
 
-      if attributes.has_key?(:'desc')
-        self.desc = attributes[:'desc']
+      if attributes.has_key?(:'serviceid')
+        self.serviceid = attributes[:'serviceid']
       end
 
-      if attributes.has_key?(:'price')
-        self.price = attributes[:'price']
-      end
-
-      if attributes.has_key?(:'event')
-        self.event = attributes[:'event']
-      end
-
-      if attributes.has_key?(:'recurpric')
-        self.recurpric = attributes[:'recurpric']
+      if attributes.has_key?(:'postbody')
+        self.postbody = attributes[:'postbody']
       end
 
     end
@@ -111,11 +93,9 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          desc == o.desc &&
-          price == o.price &&
-          event == o.event &&
-          recurpric == o.recurpric
+          url == o.url &&
+          serviceid == o.serviceid &&
+          postbody == o.postbody
     end
 
     # @see the `==` method
@@ -127,7 +107,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, desc, price, event, recurpric].hash
+      [url, serviceid, postbody].hash
     end
 
     # Builds the object from hash
@@ -187,7 +167,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = InventoryClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

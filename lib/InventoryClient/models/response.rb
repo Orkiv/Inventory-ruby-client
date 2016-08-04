@@ -23,19 +23,24 @@ limitations under the License.
 
 require 'date'
 
-module SwaggerClient
+module InventoryClient
 
-  class Dictionary
+  class Response
+    # Timestamp of API request was processed
+    attr_accessor :approved
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'approved' => :'approved'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'approved' => :'Float'
       }
     end
 
@@ -46,6 +51,10 @@ module SwaggerClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'approved')
+        self.approved = attributes[:'approved']
+      end
 
     end
 
@@ -66,7 +75,8 @@ module SwaggerClient
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class
+      self.class == o.class &&
+          approved == o.approved
     end
 
     # @see the `==` method
@@ -78,7 +88,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [].hash
+      [approved].hash
     end
 
     # Builds the object from hash
@@ -138,7 +148,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = InventoryClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

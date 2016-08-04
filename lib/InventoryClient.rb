@@ -22,29 +22,29 @@ limitations under the License.
 =end
 
 # Common files
-require 'swagger_client/api_client'
-require 'swagger_client/api_error'
-require 'swagger_client/version'
-require 'swagger_client/configuration'
+require 'InventoryClient/api_client'
+require 'InventoryClient/api_error'
+require 'InventoryClient/version'
+require 'InventoryClient/configuration'
 
 # Models
-require 'swagger_client/models/category'
-require 'swagger_client/models/dictionary'
-require 'swagger_client/models/error'
-require 'swagger_client/models/event_request'
-require 'swagger_client/models/inventory_group'
-require 'swagger_client/models/item'
-require 'swagger_client/models/order'
-require 'swagger_client/models/response'
-require 'swagger_client/models/service'
+require 'InventoryClient/models/category'
+require 'InventoryClient/models/dictionary'
+require 'InventoryClient/models/error'
+require 'InventoryClient/models/event_request'
+require 'InventoryClient/models/inventory_group'
+require 'InventoryClient/models/item'
+require 'InventoryClient/models/order'
+require 'InventoryClient/models/response'
+require 'InventoryClient/models/service'
 
 # APIs
-require 'swagger_client/api/default_api'
+require 'InventoryClient/api/default_api'
 
-module SwaggerClient
+module InventoryClient
   class << self
     # Customize default settings for the SDK using block.
-    #   SwaggerClient.configure do |config|
+    #   InventoryClient.configure do |config|
     #     config.username = "xxx"
     #     config.password = "xxx"
     #   end

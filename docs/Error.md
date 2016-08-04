@@ -1,4 +1,4 @@
-# SwaggerClient::Error
+# InventoryClient::Error
 
 ## Properties
 Name | Type | Description | Notes

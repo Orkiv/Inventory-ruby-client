@@ -1,4 +1,4 @@
-# SwaggerClient::InventoryGroup
+# InventoryClient::InventoryGroup
 
 ## Properties
 Name | Type | Description | Notes

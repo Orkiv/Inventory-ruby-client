@@ -23,24 +23,43 @@ limitations under the License.
 
 require 'date'
 
-module SwaggerClient
+module InventoryClient
 
-  class Response
-    # Timestamp of API request was processed
-    attr_accessor :approved
+  class Service
+    # Name of service
+    attr_accessor :name
+
+    # Richtext description of item
+    attr_accessor :desc
+
+    # Upfront cost of service in hundreds
+    attr_accessor :price
+
+    attr_accessor :event
+
+    # Recurring monthly cost of subscription
+    attr_accessor :recurpric
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'approved' => :'approved'
+        :'name' => :'name',
+        :'desc' => :'desc',
+        :'price' => :'price',
+        :'event' => :'event',
+        :'recurpric' => :'recurpric'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'approved' => :'Float'
+        :'name' => :'String',
+        :'desc' => :'String',
+        :'price' => :'String',
+        :'event' => :'EventRequest',
+        :'recurpric' => :'String'
       }
     end
 
@@ -52,8 +71,24 @@ module SwaggerClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'approved')
-        self.approved = attributes[:'approved']
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'desc')
+        self.desc = attributes[:'desc']
+      end
+
+      if attributes.has_key?(:'price')
+        self.price = attributes[:'price']
+      end
+
+      if attributes.has_key?(:'event')
+        self.event = attributes[:'event']
+      end
+
+      if attributes.has_key?(:'recurpric')
+        self.recurpric = attributes[:'recurpric']
       end
 
     end
@@ -76,7 +111,11 @@ module SwaggerClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          approved == o.approved
+          name == o.name &&
+          desc == o.desc &&
+          price == o.price &&
+          event == o.event &&
+          recurpric == o.recurpric
     end
 
     # @see the `==` method
@@ -88,7 +127,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [approved].hash
+      [name, desc, price, event, recurpric].hash
     end
 
     # Builds the object from hash
@@ -148,7 +187,7 @@ module SwaggerClient
           end
         end
       else # model
-        temp_model = SwaggerClient.const_get(type).new
+        temp_model = InventoryClient.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

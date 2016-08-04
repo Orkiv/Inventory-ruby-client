@@ -1,4 +1,4 @@
-# SwaggerClient::Order
+# InventoryClient::Order
 
 ## Properties
 Name | Type | Description | Notes
