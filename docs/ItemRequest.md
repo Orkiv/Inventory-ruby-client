@@ -1,4 +1,4 @@
-# InventoryClient::Item
+# InventoryClient::ItemRequest
 
 ## Properties
 Name | Type | Description | Notes
@@ -9,9 +9,6 @@ Name | Type | Description | Notes
 **name** | **String** | Name of item | [optional] 
 **ordprice** | **Float** | Integer value of price | [optional] 
 **price** | **String** | String value of price | [optional] 
-**variations** | [**Array&lt;Variation&gt;**](Variation.md) |  | [optional] 
 **quantity** | **String** | Inventory quantity | [optional] 
-**media** | **Array&lt;String&gt;** | Array of item media | [optional] 
-**buy** | **String** | Link to checkout page of item | [optional] 
 
 

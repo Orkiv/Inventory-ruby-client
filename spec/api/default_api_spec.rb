@@ -70,7 +70,7 @@ describe 'DefaultApi' do
   # 
   # 
   # @param [Hash] opts the optional parameters
-  # @option opts [Dictionary] :query Category to query against system
+  # @option opts [Category] :query Category to query against system
   # @return [Array<Category>]
   describe 'categories_post test' do
     it "should work" do
@@ -127,6 +127,43 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for item_get
+  # 
+  # 
+  # @param id Item ID to open.
+  # @param [Hash] opts the optional parameters
+  # @return [Item]
+  describe 'item_get test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for item_media_delete
+  # 
+  # 
+  # @param imageurl URL of image to remove
+  # @param [Hash] opts the optional parameters
+  # @return [Response]
+  describe 'item_media_delete test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for item_media_post
+  # 
+  # This endpoint is currently in testing.
+  # @param id Valid item id to bind image to.
+  # @param image Image.
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'item_media_post test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for item_put
   # 
   # 
@@ -144,7 +181,9 @@ describe 'DefaultApi' do
   # 
   # 
   # @param [Hash] opts the optional parameters
-  # @option opts [Dictionary] :query Item to query against system.
+  # @option opts [Float] :minprice Min price of items to find
+  # @option opts [Float] :maxprice Max price of items to find
+  # @option opts [ItemRequest] :query Item to query against system.
   # @return [Float]
   describe 'items_count_post test' do
     it "should work" do
@@ -156,21 +195,11 @@ describe 'DefaultApi' do
   # 
   # 
   # @param [Hash] opts the optional parameters
-  # @option opts [Dictionary] :query Item to query against system.
+  # @option opts [Float] :minprice Min price of items to find
+  # @option opts [Float] :maxprice Max price of items to find
+  # @option opts [ItemRequest] :query Item to query against system.
   # @return [Array<Item>]
   describe 'items_post test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for itemsallfields_post
-  # 
-  # 
-  # @param [Hash] opts the optional parameters
-  # @option opts [Dictionary] :query Item to query against system.
-  # @return [Array<Dictionary>]
-  describe 'itemsallfields_post test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -180,9 +209,21 @@ describe 'DefaultApi' do
   # 
   # 
   # @param [Hash] opts the optional parameters
-  # @option opts [Dictionary] :query Order to query against system.
+  # @option opts [OrderRequest] :query Order to query against item invoices.
   # @return [Array<Order>]
   describe 'orders_post test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for orders_services_post
+  # 
+  # 
+  # @param [Hash] opts the optional parameters
+  # @option opts [OrderRequest] :query Order to query against service invoices.
+  # @return [Array<Order>]
+  describe 'orders_services_post test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -196,29 +237,11 @@ describe 'DefaultApi' do
   # @option opts [String] :categoryid Get items under specified category id.
   # @option opts [String] :sort Comma delimited Sort string. ie ; +ordprice. Please use number based fields only
   # @option opts [String] :search Performs a regex pattern match against the items within your account
-  # @option opts [Float] :minprice Min price in hundreds.
-  # @option opts [Float] :maxprice Max price in hudreds.
-  # @option opts [Dictionary] :query Custom parameters to query against system.
+  # @option opts [Float] :minprice Min price in hundreds (cents).
+  # @option opts [Float] :maxprice Max price in hundreds (cents).
+  # @option opts [ItemRequest] :query Custom parameters to query against system.
   # @return [Array<Item>]
   describe 'query_post test' do
-    it "should work" do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for queryallfields_post
-  # 
-  # 
-  # @param [Hash] opts the optional parameters
-  # @option opts [Float] :page Current page index.
-  # @option opts [String] :categoryid Get items under specified category id.
-  # @option opts [String] :sort Comma delimited Sort string. ie ; +ordprice. Please use number based fields only
-  # @option opts [String] :search Performs a regex pattern match against the items within your account
-  # @option opts [Float] :minprice Min price in hundreds.
-  # @option opts [Float] :maxprice Max price in hudreds.
-  # @option opts [Dictionary] :query Custom parameters to query against system.
-  # @return [Array<Dictionary>]
-  describe 'queryallfields_post test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -247,6 +270,18 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for services_open_get
+  # 
+  # 
+  # @param id ID of service to open
+  # @param [Hash] opts the optional parameters
+  # @return [Service]
+  describe 'services_open_get test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for services_post
   # 
   # 
@@ -267,6 +302,56 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [Response]
   describe 'services_put test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for variation_delete
+  # 
+  # 
+  # @param id variation id to remove
+  # @param [Hash] opts the optional parameters
+  # @return [Response]
+  describe 'variation_delete test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for variation_get
+  # 
+  # 
+  # @param id Variation ID to open.
+  # @param [Hash] opts the optional parameters
+  # @return [Variation]
+  describe 'variation_get test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for variation_post
+  # 
+  # 
+  # @param id Valid item id to bind variation to.
+  # @param item Variation information.
+  # @param [Hash] opts the optional parameters
+  # @return [Response]
+  describe 'variation_post test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for variation_put
+  # 
+  # 
+  # @param id variation id to update.
+  # @param item New variation information.
+  # @param [Hash] opts the optional parameters
+  # @return [Response]
+  describe 'variation_put test' do
     it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

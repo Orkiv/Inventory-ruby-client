@@ -25,66 +25,112 @@ require 'date'
 
 module InventoryClient
 
-  class Item
-    # ID of item
-    attr_accessor :id
+  class OrderRequest
+    # Order ID
+    attr_accessor :order_id
 
-    # Category ID of item
-    attr_accessor :category
+    # Customer email
+    attr_accessor :info_email
 
-    # Rich text description of item
-    attr_accessor :desc
+    # Customer first name
+    attr_accessor :info_first
 
-    # Name of item
-    attr_accessor :name
+    # Customer last name
+    attr_accessor :info_last
 
-    # Integer value of price
-    attr_accessor :ordprice
+    # Customer phone number
+    attr_accessor :phone
 
-    # String value of price
-    attr_accessor :price
+    # Customer billing address matches shipping address
+    attr_accessor :shipset
 
-    attr_accessor :variations
+    # Customer billing address line '1'
+    attr_accessor :info_adr1
 
-    # Inventory quantity
-    attr_accessor :quantity
+    # Customer billing address line '2'
+    attr_accessor :info_adr2
 
-    # Array of item media
-    attr_accessor :media
+    # Customer billing city
+    attr_accessor :info_cty
 
-    # Link to checkout page of item
-    attr_accessor :buy
+    # Customer billing zip code
+    attr_accessor :info_zip
+
+    # Customer billing state
+    attr_accessor :state
+
+    # Customer shipping address line '1'
+    attr_accessor :info_sadr1
+
+    # Customer shipping address line '2'
+    attr_accessor :info_sadr2
+
+    # Customer shipping city
+    attr_accessor :info_scty
+
+    # Customer shipping zip code
+    attr_accessor :info_szip
+
+    # Customer shipping state
+    attr_accessor :sstate
+
+    # Tax amount in hundreds. Must divide by '100' for USD value
+    attr_accessor :tax_amount
+
+    # Shipping total in USD
+    attr_accessor :shipping_amount
+
+    # Checkout total in USD
+    attr_accessor :amount_total
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'category' => :'category',
-        :'desc' => :'desc',
-        :'name' => :'name',
-        :'ordprice' => :'ordprice',
-        :'price' => :'price',
-        :'variations' => :'variations',
-        :'quantity' => :'quantity',
-        :'media' => :'media',
-        :'buy' => :'Buy'
+        :'order_id' => :'order_id',
+        :'info_email' => :'info_email',
+        :'info_first' => :'info_first',
+        :'info_last' => :'info_last',
+        :'phone' => :'phone',
+        :'shipset' => :'shipset',
+        :'info_adr1' => :'info_adr1',
+        :'info_adr2' => :'info_adr2',
+        :'info_cty' => :'info_cty',
+        :'info_zip' => :'info_zip',
+        :'state' => :'state',
+        :'info_sadr1' => :'info_sadr1',
+        :'info_sadr2' => :'info_sadr2',
+        :'info_scty' => :'info_scty',
+        :'info_szip' => :'info_szip',
+        :'sstate' => :'sstate',
+        :'tax_amount' => :'tax_amount',
+        :'shipping_amount' => :'shipping_amount',
+        :'amount_total' => :'amount_total'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String',
-        :'category' => :'String',
-        :'desc' => :'String',
-        :'name' => :'String',
-        :'ordprice' => :'Float',
-        :'price' => :'String',
-        :'variations' => :'Array<Variation>',
-        :'quantity' => :'String',
-        :'media' => :'Array<String>',
-        :'buy' => :'String'
+        :'order_id' => :'String',
+        :'info_email' => :'String',
+        :'info_first' => :'String',
+        :'info_last' => :'String',
+        :'phone' => :'String',
+        :'shipset' => :'BOOLEAN',
+        :'info_adr1' => :'String',
+        :'info_adr2' => :'String',
+        :'info_cty' => :'String',
+        :'info_zip' => :'String',
+        :'state' => :'String',
+        :'info_sadr1' => :'String',
+        :'info_sadr2' => :'String',
+        :'info_scty' => :'String',
+        :'info_szip' => :'String',
+        :'sstate' => :'String',
+        :'tax_amount' => :'Float',
+        :'shipping_amount' => :'Float',
+        :'amount_total' => :'Float'
       }
     end
 
@@ -96,48 +142,80 @@ module InventoryClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.has_key?(:'order_id')
+        self.order_id = attributes[:'order_id']
       end
 
-      if attributes.has_key?(:'category')
-        self.category = attributes[:'category']
+      if attributes.has_key?(:'info_email')
+        self.info_email = attributes[:'info_email']
       end
 
-      if attributes.has_key?(:'desc')
-        self.desc = attributes[:'desc']
+      if attributes.has_key?(:'info_first')
+        self.info_first = attributes[:'info_first']
       end
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'info_last')
+        self.info_last = attributes[:'info_last']
       end
 
-      if attributes.has_key?(:'ordprice')
-        self.ordprice = attributes[:'ordprice']
+      if attributes.has_key?(:'phone')
+        self.phone = attributes[:'phone']
       end
 
-      if attributes.has_key?(:'price')
-        self.price = attributes[:'price']
+      if attributes.has_key?(:'shipset')
+        self.shipset = attributes[:'shipset']
       end
 
-      if attributes.has_key?(:'variations')
-        if (value = attributes[:'variations']).is_a?(Array)
-          self.variations = value
-        end
+      if attributes.has_key?(:'info_adr1')
+        self.info_adr1 = attributes[:'info_adr1']
       end
 
-      if attributes.has_key?(:'quantity')
-        self.quantity = attributes[:'quantity']
+      if attributes.has_key?(:'info_adr2')
+        self.info_adr2 = attributes[:'info_adr2']
       end
 
-      if attributes.has_key?(:'media')
-        if (value = attributes[:'media']).is_a?(Array)
-          self.media = value
-        end
+      if attributes.has_key?(:'info_cty')
+        self.info_cty = attributes[:'info_cty']
       end
 
-      if attributes.has_key?(:'Buy')
-        self.buy = attributes[:'Buy']
+      if attributes.has_key?(:'info_zip')
+        self.info_zip = attributes[:'info_zip']
+      end
+
+      if attributes.has_key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.has_key?(:'info_sadr1')
+        self.info_sadr1 = attributes[:'info_sadr1']
+      end
+
+      if attributes.has_key?(:'info_sadr2')
+        self.info_sadr2 = attributes[:'info_sadr2']
+      end
+
+      if attributes.has_key?(:'info_scty')
+        self.info_scty = attributes[:'info_scty']
+      end
+
+      if attributes.has_key?(:'info_szip')
+        self.info_szip = attributes[:'info_szip']
+      end
+
+      if attributes.has_key?(:'sstate')
+        self.sstate = attributes[:'sstate']
+      end
+
+      if attributes.has_key?(:'tax_amount')
+        self.tax_amount = attributes[:'tax_amount']
+      end
+
+      if attributes.has_key?(:'shipping_amount')
+        self.shipping_amount = attributes[:'shipping_amount']
+      end
+
+      if attributes.has_key?(:'amount_total')
+        self.amount_total = attributes[:'amount_total']
       end
 
     end
@@ -160,16 +238,25 @@ module InventoryClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          category == o.category &&
-          desc == o.desc &&
-          name == o.name &&
-          ordprice == o.ordprice &&
-          price == o.price &&
-          variations == o.variations &&
-          quantity == o.quantity &&
-          media == o.media &&
-          buy == o.buy
+          order_id == o.order_id &&
+          info_email == o.info_email &&
+          info_first == o.info_first &&
+          info_last == o.info_last &&
+          phone == o.phone &&
+          shipset == o.shipset &&
+          info_adr1 == o.info_adr1 &&
+          info_adr2 == o.info_adr2 &&
+          info_cty == o.info_cty &&
+          info_zip == o.info_zip &&
+          state == o.state &&
+          info_sadr1 == o.info_sadr1 &&
+          info_sadr2 == o.info_sadr2 &&
+          info_scty == o.info_scty &&
+          info_szip == o.info_szip &&
+          sstate == o.sstate &&
+          tax_amount == o.tax_amount &&
+          shipping_amount == o.shipping_amount &&
+          amount_total == o.amount_total
     end
 
     # @see the `==` method
@@ -181,7 +268,7 @@ module InventoryClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, category, desc, name, ordprice, price, variations, quantity, media, buy].hash
+      [order_id, info_email, info_first, info_last, phone, shipset, info_adr1, info_adr2, info_cty, info_zip, state, info_sadr1, info_sadr2, info_scty, info_szip, sstate, tax_amount, shipping_amount, amount_total].hash
     end
 
     # Builds the object from hash

@@ -32,6 +32,7 @@ module InventoryClient
     # ServiceID to bind event to.
     attr_accessor :serviceid
 
+    # Valid JSON of Key-value parameters to post to url
     attr_accessor :postbody
 
 
@@ -49,7 +50,7 @@ module InventoryClient
       {
         :'url' => :'String',
         :'serviceid' => :'String',
-        :'postbody' => :'Dictionary'
+        :'postbody' => :'String'
       }
     end
 

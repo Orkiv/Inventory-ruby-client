@@ -25,17 +25,37 @@ require 'date'
 
 module InventoryClient
 
-  class Dictionary
+  class ServiceRequest
+    # Name of service
+    attr_accessor :name
+
+    # Richtext description of item
+    attr_accessor :desc
+
+    # Upfront cost of service in hundreds
+    attr_accessor :price
+
+    # Recurring monthly cost of subscription
+    attr_accessor :recurpric
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'name' => :'name',
+        :'desc' => :'desc',
+        :'price' => :'price',
+        :'recurpric' => :'recurpric'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'name' => :'String',
+        :'desc' => :'String',
+        :'price' => :'String',
+        :'recurpric' => :'String'
       }
     end
 
@@ -46,6 +66,22 @@ module InventoryClient
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'desc')
+        self.desc = attributes[:'desc']
+      end
+
+      if attributes.has_key?(:'price')
+        self.price = attributes[:'price']
+      end
+
+      if attributes.has_key?(:'recurpric')
+        self.recurpric = attributes[:'recurpric']
+      end
 
     end
 
@@ -66,7 +102,11 @@ module InventoryClient
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class
+      self.class == o.class &&
+          name == o.name &&
+          desc == o.desc &&
+          price == o.price &&
+          recurpric == o.recurpric
     end
 
     # @see the `==` method
@@ -78,7 +118,7 @@ module InventoryClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [].hash
+      [name, desc, price, recurpric].hash
     end
 
     # Builds the object from hash

@@ -25,66 +25,32 @@ require 'date'
 
 module InventoryClient
 
-  class Item
-    # ID of item
-    attr_accessor :id
-
-    # Category ID of item
-    attr_accessor :category
-
-    # Rich text description of item
-    attr_accessor :desc
-
-    # Name of item
+  class Variation
+    # Variation name
     attr_accessor :name
 
-    # Integer value of price
-    attr_accessor :ordprice
+    # New price to set if variation is set (in hundreds)
+    attr_accessor :price_change
 
-    # String value of price
-    attr_accessor :price
-
-    attr_accessor :variations
-
-    # Inventory quantity
-    attr_accessor :quantity
-
-    # Array of item media
-    attr_accessor :media
-
-    # Link to checkout page of item
-    attr_accessor :buy
+    # System ID of variation
+    attr_accessor :id
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'category' => :'category',
-        :'desc' => :'desc',
         :'name' => :'name',
-        :'ordprice' => :'ordprice',
-        :'price' => :'price',
-        :'variations' => :'variations',
-        :'quantity' => :'quantity',
-        :'media' => :'media',
-        :'buy' => :'Buy'
+        :'price_change' => :'priceChange',
+        :'id' => :'id'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String',
-        :'category' => :'String',
-        :'desc' => :'String',
         :'name' => :'String',
-        :'ordprice' => :'Float',
-        :'price' => :'String',
-        :'variations' => :'Array<Variation>',
-        :'quantity' => :'String',
-        :'media' => :'Array<String>',
-        :'buy' => :'String'
+        :'price_change' => :'Float',
+        :'id' => :'String'
       }
     end
 
@@ -96,48 +62,16 @@ module InventoryClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.has_key?(:'category')
-        self.category = attributes[:'category']
-      end
-
-      if attributes.has_key?(:'desc')
-        self.desc = attributes[:'desc']
-      end
-
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'ordprice')
-        self.ordprice = attributes[:'ordprice']
+      if attributes.has_key?(:'priceChange')
+        self.price_change = attributes[:'priceChange']
       end
 
-      if attributes.has_key?(:'price')
-        self.price = attributes[:'price']
-      end
-
-      if attributes.has_key?(:'variations')
-        if (value = attributes[:'variations']).is_a?(Array)
-          self.variations = value
-        end
-      end
-
-      if attributes.has_key?(:'quantity')
-        self.quantity = attributes[:'quantity']
-      end
-
-      if attributes.has_key?(:'media')
-        if (value = attributes[:'media']).is_a?(Array)
-          self.media = value
-        end
-      end
-
-      if attributes.has_key?(:'Buy')
-        self.buy = attributes[:'Buy']
+      if attributes.has_key?(:'id')
+        self.id = attributes[:'id']
       end
 
     end
@@ -160,16 +94,9 @@ module InventoryClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          category == o.category &&
-          desc == o.desc &&
           name == o.name &&
-          ordprice == o.ordprice &&
-          price == o.price &&
-          variations == o.variations &&
-          quantity == o.quantity &&
-          media == o.media &&
-          buy == o.buy
+          price_change == o.price_change &&
+          id == o.id
     end
 
     # @see the `==` method
@@ -181,7 +108,7 @@ module InventoryClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, category, desc, name, ordprice, price, variations, quantity, media, buy].hash
+      [name, price_change, id].hash
     end
 
     # Builds the object from hash

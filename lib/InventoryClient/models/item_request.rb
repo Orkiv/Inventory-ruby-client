@@ -25,7 +25,7 @@ require 'date'
 
 module InventoryClient
 
-  class Item
+  class ItemRequest
     # ID of item
     attr_accessor :id
 
@@ -44,16 +44,8 @@ module InventoryClient
     # String value of price
     attr_accessor :price
 
-    attr_accessor :variations
-
     # Inventory quantity
     attr_accessor :quantity
-
-    # Array of item media
-    attr_accessor :media
-
-    # Link to checkout page of item
-    attr_accessor :buy
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -65,10 +57,7 @@ module InventoryClient
         :'name' => :'name',
         :'ordprice' => :'ordprice',
         :'price' => :'price',
-        :'variations' => :'variations',
-        :'quantity' => :'quantity',
-        :'media' => :'media',
-        :'buy' => :'Buy'
+        :'quantity' => :'quantity'
       }
     end
 
@@ -81,10 +70,7 @@ module InventoryClient
         :'name' => :'String',
         :'ordprice' => :'Float',
         :'price' => :'String',
-        :'variations' => :'Array<Variation>',
-        :'quantity' => :'String',
-        :'media' => :'Array<String>',
-        :'buy' => :'String'
+        :'quantity' => :'String'
       }
     end
 
@@ -120,24 +106,8 @@ module InventoryClient
         self.price = attributes[:'price']
       end
 
-      if attributes.has_key?(:'variations')
-        if (value = attributes[:'variations']).is_a?(Array)
-          self.variations = value
-        end
-      end
-
       if attributes.has_key?(:'quantity')
         self.quantity = attributes[:'quantity']
-      end
-
-      if attributes.has_key?(:'media')
-        if (value = attributes[:'media']).is_a?(Array)
-          self.media = value
-        end
-      end
-
-      if attributes.has_key?(:'Buy')
-        self.buy = attributes[:'Buy']
       end
 
     end
@@ -166,10 +136,7 @@ module InventoryClient
           name == o.name &&
           ordprice == o.ordprice &&
           price == o.price &&
-          variations == o.variations &&
-          quantity == o.quantity &&
-          media == o.media &&
-          buy == o.buy
+          quantity == o.quantity
     end
 
     # @see the `==` method
@@ -181,7 +148,7 @@ module InventoryClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, category, desc, name, ordprice, price, variations, quantity, media, buy].hash
+      [id, category, desc, name, ordprice, price, quantity].hash
     end
 
     # Builds the object from hash

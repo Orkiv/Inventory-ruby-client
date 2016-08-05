@@ -145,7 +145,7 @@ module InventoryClient
     # 
     # 
     # @param [Hash] opts the optional parameters
-    # @option opts [Dictionary] :query Category to query against system
+    # @option opts [Category] :query Category to query against system
     # @return [Array<Category>]
     def categories_post(opts = {})
       data, _status_code, _headers = categories_post_with_http_info(opts)
@@ -155,7 +155,7 @@ module InventoryClient
     # 
     # 
     # @param [Hash] opts the optional parameters
-    # @option opts [Dictionary] :query Category to query against system
+    # @option opts [Category] :query Category to query against system
     # @return [Array<(Array<Category>, Fixnum, Hash)>] Array<Category> data, response status code and response headers
     def categories_post_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -433,6 +433,185 @@ module InventoryClient
 
     # 
     # 
+    # @param id Item ID to open.
+    # @param [Hash] opts the optional parameters
+    # @return [Item]
+    def item_get(id, opts = {})
+      data, _status_code, _headers = item_get_with_http_info(id, opts)
+      return data
+    end
+
+    # 
+    # 
+    # @param id Item ID to open.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Item, Fixnum, Hash)>] Item data, response status code and response headers
+    def item_get_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.item_get ..."
+      end
+      # verify the required parameter 'id' is set
+      fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.item_get" if id.nil?
+      # resource path
+      local_var_path = "/item/".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'id'] = id
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APIKey', 'AccountID']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Item')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#item_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # 
+    # 
+    # @param imageurl URL of image to remove
+    # @param [Hash] opts the optional parameters
+    # @return [Response]
+    def item_media_delete(imageurl, opts = {})
+      data, _status_code, _headers = item_media_delete_with_http_info(imageurl, opts)
+      return data
+    end
+
+    # 
+    # 
+    # @param imageurl URL of image to remove
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Response, Fixnum, Hash)>] Response data, response status code and response headers
+    def item_media_delete_with_http_info(imageurl, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.item_media_delete ..."
+      end
+      # verify the required parameter 'imageurl' is set
+      fail ArgumentError, "Missing the required parameter 'imageurl' when calling DefaultApi.item_media_delete" if imageurl.nil?
+      # resource path
+      local_var_path = "/item-media/".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'imageurl'] = imageurl
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APIKey', 'AccountID']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Response')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#item_media_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # 
+    # This endpoint is currently in testing.
+    # @param id Valid item id to bind image to.
+    # @param image Image.
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def item_media_post(id, image, opts = {})
+      data, _status_code, _headers = item_media_post_with_http_info(id, image, opts)
+      return data
+    end
+
+    # 
+    # This endpoint is currently in testing.
+    # @param id Valid item id to bind image to.
+    # @param image Image.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Fixnum, Hash)>] String data, response status code and response headers
+    def item_media_post_with_http_info(id, image, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.item_media_post ..."
+      end
+      # verify the required parameter 'id' is set
+      fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.item_media_post" if id.nil?
+      # verify the required parameter 'image' is set
+      fail ArgumentError, "Missing the required parameter 'image' when calling DefaultApi.item_media_post" if image.nil?
+      # resource path
+      local_var_path = "/item-media/".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'id'] = id
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = ['multipart/form-data', 'application/x-www-form-urlencoded']
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+      form_params["image"] = image
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APIKey', 'AccountID']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'String')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#item_media_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # 
+    # 
     # @param id item id to update.
     # @param item New item information.
     # @param [Hash] opts the optional parameters
@@ -496,7 +675,9 @@ module InventoryClient
     # 
     # 
     # @param [Hash] opts the optional parameters
-    # @option opts [Dictionary] :query Item to query against system.
+    # @option opts [Float] :minprice Min price of items to find
+    # @option opts [Float] :maxprice Max price of items to find
+    # @option opts [ItemRequest] :query Item to query against system.
     # @return [Float]
     def items_count_post(opts = {})
       data, _status_code, _headers = items_count_post_with_http_info(opts)
@@ -506,7 +687,9 @@ module InventoryClient
     # 
     # 
     # @param [Hash] opts the optional parameters
-    # @option opts [Dictionary] :query Item to query against system.
+    # @option opts [Float] :minprice Min price of items to find
+    # @option opts [Float] :maxprice Max price of items to find
+    # @option opts [ItemRequest] :query Item to query against system.
     # @return [Array<(Float, Fixnum, Hash)>] Float data, response status code and response headers
     def items_count_post_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -517,6 +700,8 @@ module InventoryClient
 
       # query parameters
       query_params = {}
+      query_params[:'minprice'] = opts[:'minprice'] if !opts[:'minprice'].nil?
+      query_params[:'maxprice'] = opts[:'maxprice'] if !opts[:'maxprice'].nil?
 
       # header parameters
       header_params = {}
@@ -551,7 +736,9 @@ module InventoryClient
     # 
     # 
     # @param [Hash] opts the optional parameters
-    # @option opts [Dictionary] :query Item to query against system.
+    # @option opts [Float] :minprice Min price of items to find
+    # @option opts [Float] :maxprice Max price of items to find
+    # @option opts [ItemRequest] :query Item to query against system.
     # @return [Array<Item>]
     def items_post(opts = {})
       data, _status_code, _headers = items_post_with_http_info(opts)
@@ -561,7 +748,9 @@ module InventoryClient
     # 
     # 
     # @param [Hash] opts the optional parameters
-    # @option opts [Dictionary] :query Item to query against system.
+    # @option opts [Float] :minprice Min price of items to find
+    # @option opts [Float] :maxprice Max price of items to find
+    # @option opts [ItemRequest] :query Item to query against system.
     # @return [Array<(Array<Item>, Fixnum, Hash)>] Array<Item> data, response status code and response headers
     def items_post_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -572,6 +761,8 @@ module InventoryClient
 
       # query parameters
       query_params = {}
+      query_params[:'minprice'] = opts[:'minprice'] if !opts[:'minprice'].nil?
+      query_params[:'maxprice'] = opts[:'maxprice'] if !opts[:'maxprice'].nil?
 
       # header parameters
       header_params = {}
@@ -606,62 +797,7 @@ module InventoryClient
     # 
     # 
     # @param [Hash] opts the optional parameters
-    # @option opts [Dictionary] :query Item to query against system.
-    # @return [Array<Dictionary>]
-    def itemsallfields_post(opts = {})
-      data, _status_code, _headers = itemsallfields_post_with_http_info(opts)
-      return data
-    end
-
-    # 
-    # 
-    # @param [Hash] opts the optional parameters
-    # @option opts [Dictionary] :query Item to query against system.
-    # @return [Array<(Array<Dictionary>, Fixnum, Hash)>] Array<Dictionary> data, response status code and response headers
-    def itemsallfields_post_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: DefaultApi.itemsallfields_post ..."
-      end
-      # resource path
-      local_var_path = "/items/?allfields".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = []
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(opts[:'query'])
-      auth_names = ['APIKey', 'AccountID']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Array<Dictionary>')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#itemsallfields_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # 
-    # 
-    # @param [Hash] opts the optional parameters
-    # @option opts [Dictionary] :query Order to query against system.
+    # @option opts [OrderRequest] :query Order to query against item invoices.
     # @return [Array<Order>]
     def orders_post(opts = {})
       data, _status_code, _headers = orders_post_with_http_info(opts)
@@ -671,7 +807,7 @@ module InventoryClient
     # 
     # 
     # @param [Hash] opts the optional parameters
-    # @option opts [Dictionary] :query Order to query against system.
+    # @option opts [OrderRequest] :query Order to query against item invoices.
     # @return [Array<(Array<Order>, Fixnum, Hash)>] Array<Order> data, response status code and response headers
     def orders_post_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -716,13 +852,68 @@ module InventoryClient
     # 
     # 
     # @param [Hash] opts the optional parameters
+    # @option opts [OrderRequest] :query Order to query against service invoices.
+    # @return [Array<Order>]
+    def orders_services_post(opts = {})
+      data, _status_code, _headers = orders_services_post_with_http_info(opts)
+      return data
+    end
+
+    # 
+    # 
+    # @param [Hash] opts the optional parameters
+    # @option opts [OrderRequest] :query Order to query against service invoices.
+    # @return [Array<(Array<Order>, Fixnum, Hash)>] Array<Order> data, response status code and response headers
+    def orders_services_post_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.orders_services_post ..."
+      end
+      # resource path
+      local_var_path = "/orders/services/".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(opts[:'query'])
+      auth_names = ['APIKey', 'AccountID']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<Order>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#orders_services_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # 
+    # 
+    # @param [Hash] opts the optional parameters
     # @option opts [Float] :page Current page index.
     # @option opts [String] :categoryid Get items under specified category id.
     # @option opts [String] :sort Comma delimited Sort string. ie ; +ordprice. Please use number based fields only
     # @option opts [String] :search Performs a regex pattern match against the items within your account
-    # @option opts [Float] :minprice Min price in hundreds.
-    # @option opts [Float] :maxprice Max price in hudreds.
-    # @option opts [Dictionary] :query Custom parameters to query against system.
+    # @option opts [Float] :minprice Min price in hundreds (cents).
+    # @option opts [Float] :maxprice Max price in hundreds (cents).
+    # @option opts [ItemRequest] :query Custom parameters to query against system.
     # @return [Array<Item>]
     def query_post(opts = {})
       data, _status_code, _headers = query_post_with_http_info(opts)
@@ -736,9 +927,9 @@ module InventoryClient
     # @option opts [String] :categoryid Get items under specified category id.
     # @option opts [String] :sort Comma delimited Sort string. ie ; +ordprice. Please use number based fields only
     # @option opts [String] :search Performs a regex pattern match against the items within your account
-    # @option opts [Float] :minprice Min price in hundreds.
-    # @option opts [Float] :maxprice Max price in hudreds.
-    # @option opts [Dictionary] :query Custom parameters to query against system.
+    # @option opts [Float] :minprice Min price in hundreds (cents).
+    # @option opts [Float] :maxprice Max price in hundreds (cents).
+    # @option opts [ItemRequest] :query Custom parameters to query against system.
     # @return [Array<(Array<Item>, Fixnum, Hash)>] Array<Item> data, response status code and response headers
     def query_post_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -782,79 +973,6 @@ module InventoryClient
         :return_type => 'Array<Item>')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#query_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # 
-    # 
-    # @param [Hash] opts the optional parameters
-    # @option opts [Float] :page Current page index.
-    # @option opts [String] :categoryid Get items under specified category id.
-    # @option opts [String] :sort Comma delimited Sort string. ie ; +ordprice. Please use number based fields only
-    # @option opts [String] :search Performs a regex pattern match against the items within your account
-    # @option opts [Float] :minprice Min price in hundreds.
-    # @option opts [Float] :maxprice Max price in hudreds.
-    # @option opts [Dictionary] :query Custom parameters to query against system.
-    # @return [Array<Dictionary>]
-    def queryallfields_post(opts = {})
-      data, _status_code, _headers = queryallfields_post_with_http_info(opts)
-      return data
-    end
-
-    # 
-    # 
-    # @param [Hash] opts the optional parameters
-    # @option opts [Float] :page Current page index.
-    # @option opts [String] :categoryid Get items under specified category id.
-    # @option opts [String] :sort Comma delimited Sort string. ie ; +ordprice. Please use number based fields only
-    # @option opts [String] :search Performs a regex pattern match against the items within your account
-    # @option opts [Float] :minprice Min price in hundreds.
-    # @option opts [Float] :maxprice Max price in hudreds.
-    # @option opts [Dictionary] :query Custom parameters to query against system.
-    # @return [Array<(Array<Dictionary>, Fixnum, Hash)>] Array<Dictionary> data, response status code and response headers
-    def queryallfields_post_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: DefaultApi.queryallfields_post ..."
-      end
-      # resource path
-      local_var_path = "/query/?allfields".sub('{format}','json')
-
-      # query parameters
-      query_params = {}
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'categoryid'] = opts[:'categoryid'] if !opts[:'categoryid'].nil?
-      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
-      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'minprice'] = opts[:'minprice'] if !opts[:'minprice'].nil?
-      query_params[:'maxprice'] = opts[:'maxprice'] if !opts[:'maxprice'].nil?
-
-      # header parameters
-      header_params = {}
-
-      # HTTP header 'Accept' (if needed)
-      local_header_accept = ['application/json']
-      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
-
-      # HTTP header 'Content-Type'
-      local_header_content_type = []
-      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(opts[:'query'])
-      auth_names = ['APIKey', 'AccountID']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Array<Dictionary>')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#queryallfields_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -966,6 +1084,64 @@ module InventoryClient
         :return_type => 'Array<Service>')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#services_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # 
+    # 
+    # @param id ID of service to open
+    # @param [Hash] opts the optional parameters
+    # @return [Service]
+    def services_open_get(id, opts = {})
+      data, _status_code, _headers = services_open_get_with_http_info(id, opts)
+      return data
+    end
+
+    # 
+    # 
+    # @param id ID of service to open
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Service, Fixnum, Hash)>] Service data, response status code and response headers
+    def services_open_get_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.services_open_get ..."
+      end
+      # verify the required parameter 'id' is set
+      fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.services_open_get" if id.nil?
+      # resource path
+      local_var_path = "/services/open/".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'id'] = id
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APIKey', 'AccountID']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Service')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#services_open_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1085,6 +1261,246 @@ module InventoryClient
         :return_type => 'Response')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#services_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # 
+    # 
+    # @param id variation id to remove
+    # @param [Hash] opts the optional parameters
+    # @return [Response]
+    def variation_delete(id, opts = {})
+      data, _status_code, _headers = variation_delete_with_http_info(id, opts)
+      return data
+    end
+
+    # 
+    # 
+    # @param id variation id to remove
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Response, Fixnum, Hash)>] Response data, response status code and response headers
+    def variation_delete_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.variation_delete ..."
+      end
+      # verify the required parameter 'id' is set
+      fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.variation_delete" if id.nil?
+      # resource path
+      local_var_path = "/variation/".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'id'] = id
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APIKey', 'AccountID']
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Response')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#variation_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # 
+    # 
+    # @param id Variation ID to open.
+    # @param [Hash] opts the optional parameters
+    # @return [Variation]
+    def variation_get(id, opts = {})
+      data, _status_code, _headers = variation_get_with_http_info(id, opts)
+      return data
+    end
+
+    # 
+    # 
+    # @param id Variation ID to open.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Variation, Fixnum, Hash)>] Variation data, response status code and response headers
+    def variation_get_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.variation_get ..."
+      end
+      # verify the required parameter 'id' is set
+      fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.variation_get" if id.nil?
+      # resource path
+      local_var_path = "/variation/".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'id'] = id
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['APIKey', 'AccountID']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Variation')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#variation_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # 
+    # 
+    # @param id Valid item id to bind variation to.
+    # @param item Variation information.
+    # @param [Hash] opts the optional parameters
+    # @return [Response]
+    def variation_post(id, item, opts = {})
+      data, _status_code, _headers = variation_post_with_http_info(id, item, opts)
+      return data
+    end
+
+    # 
+    # 
+    # @param id Valid item id to bind variation to.
+    # @param item Variation information.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Response, Fixnum, Hash)>] Response data, response status code and response headers
+    def variation_post_with_http_info(id, item, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.variation_post ..."
+      end
+      # verify the required parameter 'id' is set
+      fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.variation_post" if id.nil?
+      # verify the required parameter 'item' is set
+      fail ArgumentError, "Missing the required parameter 'item' when calling DefaultApi.variation_post" if item.nil?
+      # resource path
+      local_var_path = "/variation/".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'id'] = id
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(item)
+      auth_names = ['APIKey', 'AccountID']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Response')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#variation_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # 
+    # 
+    # @param id variation id to update.
+    # @param item New variation information.
+    # @param [Hash] opts the optional parameters
+    # @return [Response]
+    def variation_put(id, item, opts = {})
+      data, _status_code, _headers = variation_put_with_http_info(id, item, opts)
+      return data
+    end
+
+    # 
+    # 
+    # @param id variation id to update.
+    # @param item New variation information.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Response, Fixnum, Hash)>] Response data, response status code and response headers
+    def variation_put_with_http_info(id, item, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DefaultApi.variation_put ..."
+      end
+      # verify the required parameter 'id' is set
+      fail ArgumentError, "Missing the required parameter 'id' when calling DefaultApi.variation_put" if id.nil?
+      # verify the required parameter 'item' is set
+      fail ArgumentError, "Missing the required parameter 'item' when calling DefaultApi.variation_put" if item.nil?
+      # resource path
+      local_var_path = "/variation/".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+      query_params[:'id'] = id
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      local_header_accept = ['application/json']
+      local_header_accept_result = @api_client.select_header_accept(local_header_accept) and header_params['Accept'] = local_header_accept_result
+
+      # HTTP header 'Content-Type'
+      local_header_content_type = []
+      header_params['Content-Type'] = @api_client.select_header_content_type(local_header_content_type)
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(item)
+      auth_names = ['APIKey', 'AccountID']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Response')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#variation_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

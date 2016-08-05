@@ -29,14 +29,17 @@ require 'InventoryClient/configuration'
 
 # Models
 require 'InventoryClient/models/category'
-require 'InventoryClient/models/dictionary'
 require 'InventoryClient/models/error'
 require 'InventoryClient/models/event_request'
 require 'InventoryClient/models/inventory_group'
 require 'InventoryClient/models/item'
+require 'InventoryClient/models/item_request'
 require 'InventoryClient/models/order'
+require 'InventoryClient/models/order_request'
 require 'InventoryClient/models/response'
 require 'InventoryClient/models/service'
+require 'InventoryClient/models/service_request'
+require 'InventoryClient/models/variation'
 
 # APIs
 require 'InventoryClient/api/default_api'
