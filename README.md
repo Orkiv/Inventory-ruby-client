@@ -36,9 +36,9 @@ Finally add this to the Gemfile:
 
 ### Install from Git
 
-If the Ruby gem is hosted at a git repository: https://github.com/Orkiv/Inventory-javascript-client, then add the following in the Gemfile:
+If the Ruby gem is hosted at a git repository: https://github.com/Orkiv/Inventory-ruby-client, then add the following in the Gemfile:
 
-    gem 'InventoryClient', :git => 'https://github.com/Orkiv/Inventory-javascript-client.git'
+    gem 'InventoryClient', :git => 'https://github.com/Orkiv/Inventory-ruby-client.git'
 
 ### Include the Ruby code directly
 
